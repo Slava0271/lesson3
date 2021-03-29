@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Lesson3</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank21_fragment">Hel   lo blank fragment</string>
+    <string name="music">music</string>
+    <string name="favorites">favorites</string>
+    <string name="places">places</string>
+    <string name="news">" news"</string>
+    <string name="quiz">Quiz</string>
+    <string name="stats">stats</string>
+    <string name="settings">settings</string>>
+
+</resources>
+
