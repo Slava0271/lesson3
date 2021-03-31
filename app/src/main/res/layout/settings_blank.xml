@@ -40,6 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -52,20 +53,57 @@
 
         <RadioButton
             android:id="@+id/radioButton"
-            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10sp"
-            android:text="@string/light" />
+            android:text="@string/light"
+            android:textSize="20sp" />
 
         <RadioButton
             android:id="@+id/radioButton2"
-            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
-            android:text="@string/dark" />
+            android:text="@string/dark"
+            android:textSize="20sp" />
 
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textSize="25sp"
+        android:text="@string/music"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" >
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10sp"
+            android:text="@string/on" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginStart="10sp"
+            android:text="@string/off" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
