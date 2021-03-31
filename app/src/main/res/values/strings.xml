@@ -8,7 +8,11 @@
     <string name="news">" news"</string>
     <string name="quiz">Quiz</string>
     <string name="stats">stats</string>
-    <string name="settings">settings</string>>
+    <string name="settings">settings</string>
+    <string name="complexity">Complexity:</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="theme">Theme:</string>>
 
 </resources>
 
