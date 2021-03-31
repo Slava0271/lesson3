@@ -23,13 +23,15 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnNavigationItemSelectedListener { item ->
 
             when (item.itemId) {
-                R.id.page_3->{
-                Toast.makeText(this, "test3", Toast.LENGTH_SHORT).show()
+                R.id.page_3 -> {
+                    Toast.makeText(this, "test3", Toast.LENGTH_SHORT).show()
                     change()
                 }
-                R.id.page_2->
+                R.id.page_2 -> {
                     Toast.makeText(this, "test2", Toast.LENGTH_SHORT).show()
-                R.id.page_1->
+                    change1()
+                }
+                R.id.page_1 ->
                     Toast.makeText(this, "test1", Toast.LENGTH_SHORT).show()
 
 
@@ -46,6 +48,19 @@ class MainActivity : AppCompatActivity() {
         val fragmentFirst: Fragment = BlankFragment()
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.hide(fragmentFirst)
+        fragmentTransaction.replace(R.id.fragment, fragment)
+        fragmentTransaction.hide(fragmentFirst)
+        fragmentTransaction.commit()
+
+    }
+
+    private fun change1() {
+        val fragment: Fragment = BlankFragment2()
+        val fragmentFirst: Fragment = Settings()
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.hide(fragmentFirst)
         fragmentTransaction.replace(R.id.fragment, fragment)
         fragmentTransaction.hide(fragmentFirst)
         fragmentTransaction.commit()
@@ -74,9 +89,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
 
 
 }
