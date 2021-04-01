@@ -21,6 +21,8 @@
     <string name="fourth_question">What is the most populous city in the world?</string>
     <string name="fifth_question">What person in 1969 first set foot on the moon?</string>
     <string name="play">Play</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
 

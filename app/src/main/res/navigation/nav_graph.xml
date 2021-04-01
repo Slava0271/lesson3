@@ -7,17 +7,23 @@
 
     <fragment
         android:id="@+id/quiz"
-        android:name="com.example.lesson3.BlankFragment"
+        android:name="com.example.lesson3.bottom_navigation.BlankFragment"
         android:label="fragment_blank"
-        tools:layout="@layout/quiz_blank" />
+        tools:layout="@layout/quiz_blank" >
+    </fragment>
     <fragment
         android:id="@+id/stats"
-        android:name="com.example.lesson3.BlankFragment2"
+        android:name="com.example.lesson3.bottom_navigation.BlankFragment2"
         android:label="fragment_blank2"
         tools:layout="@layout/stats_blank" />
     <fragment
         android:id="@+id/settings"
-        android:name="com.example.lesson3.Settings"
+        android:name="com.example.lesson3.bottom_navigation.Settings"
         android:label="settings_blank"
         tools:layout="@layout/settings_blank" />
+    <fragment
+        android:id="@+id/firstQuestion"
+        android:name="com.example.lesson3.FirstQuestion"
+        android:label="fragment_first_question"
+        tools:layout="@layout/fragment_first_question" />
 </navigation>
