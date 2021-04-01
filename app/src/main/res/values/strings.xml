@@ -15,6 +15,12 @@
     <string name="theme">Theme:</string>
     <string name="on">On</string>
     <string name="off">Off</string>
+    <string name="first_question">What is the capital of Singapore?</string>
+    <string name="second_question">How many oceans on the planet?</string>
+    <string name="third_question">Which country won the first FIFA World Cup?</string>
+    <string name="fourth_question">What is the most populous city in the world?</string>
+    <string name="fifth_question">What person in 1969 first set foot on the moon?</string>
+    <string name="play">Play</string>
 
 </resources>
 
