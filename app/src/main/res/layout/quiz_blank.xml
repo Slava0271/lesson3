@@ -11,11 +11,12 @@
         android:id="@+id/button"
         android:layout_width="150dp"
         android:layout_height="75dp"
+        android:drawableEnd="@drawable/play_svg"
+        android:onClick="hideAndShowFragment"
         android:text="@string/play"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:drawableEnd="@drawable/play_svg"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

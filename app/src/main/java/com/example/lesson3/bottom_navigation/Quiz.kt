@@ -1,11 +1,6 @@
 package com.example.lesson3.bottom_navigation
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,12 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.findNavController
 import com.example.lesson3.FirstQuestion
 import com.example.lesson3.R
 import kotlinx.android.synthetic.main.quiz_blank.*
-import java.io.IOException
-import java.io.InputStream
-import java.nio.channels.ServerSocketChannel.open
 
 
 private const val ARG_PARAM1 = "param1"
@@ -53,7 +46,7 @@ class BlankFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         button.setOnClickListener() {
-            changeToPlay()
+            view:View->view.findNavController().navigate(R.id.action_quiz_to_firstQuestion)
         }
     }
 
@@ -68,6 +61,16 @@ class BlankFragment : Fragment() {
             fragmentTransaction.hide(quiz)
             fragmentTransaction.commit()
     }
+
+     fun hideAndShowFragment(hide: Boolean) {
+        val fragment: Fragment = BlankFragment()
+        val fm = fragmentManager
+        fm!!.beginTransaction()
+                .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                .hide(fragment)
+                .commit()
+    }
+
 
     companion object {
         /**

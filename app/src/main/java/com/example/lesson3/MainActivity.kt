@@ -1,10 +1,6 @@
 package com.example.lesson3
 
-import android.content.Context
-import android.location.SettingInjectorService
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -13,10 +9,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.lesson3.bottom_navigation.BlankFragment
 import com.example.lesson3.bottom_navigation.BlankFragment2
 import com.example.lesson3.bottom_navigation.Settings
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.quiz_blank.*
-import kotlinx.android.synthetic.main.settings_blank.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -56,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.fragment, fragment)
         fragmentTransaction.hide(fragmentFirst)
         fragmentTransaction.commit()
+
     }
 
     private fun change1() {
@@ -71,3 +65,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
