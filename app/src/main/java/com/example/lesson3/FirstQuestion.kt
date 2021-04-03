@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import kotlinx.android.synthetic.main.fragment_first_question.*
 import kotlinx.android.synthetic.main.quiz_blank.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -33,6 +34,11 @@ class FirstQuestion : Fragment() {
 
             }
         }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        imageViewQuestion1.setImageResource(R.drawable.question1)
     }
 
 
