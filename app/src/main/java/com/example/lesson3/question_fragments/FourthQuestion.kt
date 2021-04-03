@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.example.lesson3.R
-import kotlinx.android.synthetic.main.fragment_first_question.*
+import kotlinx.android.synthetic.main.fragment_fourth_question.*
 import kotlinx.android.synthetic.main.fragment_third_question.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -20,10 +20,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ThirdQuestion.newInstance] factory method to
+ * Use the [FourthQuestion.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ThirdQuestion : Fragment() {
+class FourthQuestion : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -36,18 +36,18 @@ class ThirdQuestion : Fragment() {
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        setImage()
-        clickListenerAndChangeFragment()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_third_question, container, false)
+        return inflater.inflate(R.layout.fragment_fourth_question, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        setImage()
+        clickListenerAndChangeFragment()
     }
 
     companion object {
@@ -57,12 +57,12 @@ class ThirdQuestion : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment ThirdQuestion.
+         * @return A new instance of fragment FourthQuestion.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            ThirdQuestion().apply {
+            FourthQuestion().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
@@ -72,35 +72,34 @@ class ThirdQuestion : Fragment() {
 
 
     private fun clickListenerAndChangeFragment() {
-        button1question3.setOnClickListener() {
+        button1question4.setOnClickListener() {
             seeRightAnswer()
             changeFragment()
         }
-        button2question3.setOnClickListener() {
+        button2question4.setOnClickListener() {
             seeRightAnswer()
             changeFragment()
         }
-        button3question3.setOnClickListener() {
+        button3question4.setOnClickListener() {
             changeFragment()
             seeRightAnswer()
         }
     }
 
-
     private fun seeRightAnswer() {
-        button1question3.background.setColorFilter(
+        button1question4.background.setColorFilter(
             ContextCompat.getColor(
                 this.requireActivity(),
                 R.color.red
             ), PorterDuff.Mode.MULTIPLY
         );
-        button2question3.background.setColorFilter(
+        button2question4.background.setColorFilter(
             ContextCompat.getColor(
                 this.requireActivity(),
                 R.color.red
             ), PorterDuff.Mode.MULTIPLY
         );
-        button3question3.background.setColorFilter(
+        button3question4.background.setColorFilter(
             ContextCompat.getColor(
                 this.requireActivity(),
                 R.color.green
@@ -108,15 +107,15 @@ class ThirdQuestion : Fragment() {
         );
     }
 
-    private fun setImage() {
-        imageViewQuestion3.setImageResource(R.drawable.question3)
-    }
-
     private fun changeFragment() {
         val handler = Handler()
         handler.postDelayed(Runnable {
-            button1question3.findNavController()
-                .navigate(R.id.action_thirdQuestion_to_fourthQuestion)
+            button1question4.findNavController()
+                .navigate(R.id.action_fourthQuestion_to_fifthQuestion)
         }, 2000)
+    }
+
+    private fun setImage() {
+        imageViewQuestion4.setImageResource(R.drawable.question4)
     }
 }

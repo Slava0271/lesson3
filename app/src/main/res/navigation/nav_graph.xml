@@ -46,5 +46,23 @@
         android:id="@+id/thirdQuestion"
         android:name="com.example.lesson3.question_fragments.ThirdQuestion"
         android:label="fragment_third_question"
-        tools:layout="@layout/fragment_third_question" />
+        tools:layout="@layout/fragment_third_question" >
+        <action
+            android:id="@+id/action_thirdQuestion_to_fourthQuestion"
+            app:destination="@id/fourthQuestion" />
+    </fragment>
+    <fragment
+        android:id="@+id/fourthQuestion"
+        android:name="com.example.lesson3.question_fragments.FourthQuestion"
+        android:label="fragment_fourth_question"
+        tools:layout="@layout/fragment_fourth_question" >
+        <action
+            android:id="@+id/action_fourthQuestion_to_fifthQuestion"
+            app:destination="@id/fifthQuestion" />
+    </fragment>
+    <fragment
+        android:id="@+id/fifthQuestion"
+        android:name="com.example.lesson3.question_fragments.FifthQuestion"
+        android:label="fragment_fifth_question"
+        tools:layout="@layout/fragment_fifth_question" />
 </navigation>

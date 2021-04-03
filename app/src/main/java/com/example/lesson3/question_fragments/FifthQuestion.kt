@@ -2,16 +2,14 @@ package com.example.lesson3.question_fragments
 
 import android.graphics.PorterDuff
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.navigation.findNavController
 import com.example.lesson3.R
-import kotlinx.android.synthetic.main.fragment_first_question.*
-import kotlinx.android.synthetic.main.fragment_third_question.*
+import kotlinx.android.synthetic.main.fragment_fifth_question.*
+import kotlinx.android.synthetic.main.fragment_fourth_question.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,10 +18,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ThirdQuestion.newInstance] factory method to
+ * Use the [FifthQuestion.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ThirdQuestion : Fragment() {
+class FifthQuestion : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -47,7 +45,7 @@ class ThirdQuestion : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_third_question, container, false)
+        return inflater.inflate(R.layout.fragment_fifth_question, container, false)
     }
 
     companion object {
@@ -57,12 +55,12 @@ class ThirdQuestion : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment ThirdQuestion.
+         * @return A new instance of fragment FifthQuestion.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            ThirdQuestion().apply {
+            FifthQuestion().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
@@ -70,53 +68,44 @@ class ThirdQuestion : Fragment() {
             }
     }
 
-
     private fun clickListenerAndChangeFragment() {
-        button1question3.setOnClickListener() {
+        button1question5.setOnClickListener() {
             seeRightAnswer()
-            changeFragment()
         }
-        button2question3.setOnClickListener() {
+        button2question5.setOnClickListener() {
             seeRightAnswer()
-            changeFragment()
         }
-        button3question3.setOnClickListener() {
-            changeFragment()
+        button3question5.setOnClickListener() {
             seeRightAnswer()
         }
     }
 
 
     private fun seeRightAnswer() {
-        button1question3.background.setColorFilter(
-            ContextCompat.getColor(
-                this.requireActivity(),
-                R.color.red
-            ), PorterDuff.Mode.MULTIPLY
-        );
-        button2question3.background.setColorFilter(
-            ContextCompat.getColor(
-                this.requireActivity(),
-                R.color.red
-            ), PorterDuff.Mode.MULTIPLY
-        );
-        button3question3.background.setColorFilter(
+        button1question5.background.setColorFilter(
             ContextCompat.getColor(
                 this.requireActivity(),
                 R.color.green
             ), PorterDuff.Mode.MULTIPLY
         );
+        button2question5.background.setColorFilter(
+            ContextCompat.getColor(
+                this.requireActivity(),
+                R.color.red
+            ), PorterDuff.Mode.MULTIPLY
+        );
+        button3question5.background.setColorFilter(
+            ContextCompat.getColor(
+                this.requireActivity(),
+                R.color.red
+            ), PorterDuff.Mode.MULTIPLY
+        );
     }
+
+
 
     private fun setImage() {
-        imageViewQuestion3.setImageResource(R.drawable.question3)
+        imageViewQuestion5.setImageResource(R.drawable.question5)
     }
 
-    private fun changeFragment() {
-        val handler = Handler()
-        handler.postDelayed(Runnable {
-            button1question3.findNavController()
-                .navigate(R.id.action_thirdQuestion_to_fourthQuestion)
-        }, 2000)
-    }
 }
