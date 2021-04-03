@@ -9,15 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
-import com.example.lesson3.FirstQuestion
 import com.example.lesson3.R
+import com.example.lesson3.question_fragments.FirstQuestion
 import kotlinx.android.synthetic.main.quiz_blank.*
 
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class BlankFragment : Fragment() {
+class Quiz : Fragment() {
 
 
     // TODO: Rename and change types of parameters
@@ -54,7 +54,7 @@ class BlankFragment : Fragment() {
             //Фрагмент на который я хочу переключить
             val fragment: Fragment = FirstQuestion()
             //Фрагмент который нужно убрать
-            val quiz: Fragment = BlankFragment()
+            val quiz: Fragment = Quiz()
             val fragmentManager: FragmentManager = this.requireActivity().supportFragmentManager
             val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fragment, fragment)
@@ -63,7 +63,7 @@ class BlankFragment : Fragment() {
     }
 
      fun hideAndShowFragment(hide: Boolean) {
-        val fragment: Fragment = BlankFragment()
+        val fragment: Fragment = Quiz()
         val fm = fragmentManager
         fm!!.beginTransaction()
                 .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
@@ -84,7 +84,7 @@ class BlankFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            BlankFragment2().apply {
+            Stats().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

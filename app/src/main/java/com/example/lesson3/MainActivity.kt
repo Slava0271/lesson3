@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.lesson3.bottom_navigation.BlankFragment
-import com.example.lesson3.bottom_navigation.BlankFragment2
+import com.example.lesson3.bottom_navigation.Quiz
 import com.example.lesson3.bottom_navigation.Settings
+import com.example.lesson3.bottom_navigation.Stats
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_first_question.*
 
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun change() {
         val fragment: Fragment = Settings()
-        val fragmentFirst: Fragment = BlankFragment()
+        val fragmentFirst: Fragment = Quiz()
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.hide(fragmentFirst)
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun change1() {
-        val fragment: Fragment = BlankFragment2()
+        val fragment: Fragment = Stats()
         val fragmentFirst: Fragment = Settings()
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
