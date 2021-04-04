@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
+import com.example.lesson3.ParseJSON
 import com.example.lesson3.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_first_question.*
@@ -50,13 +51,14 @@ class FirstQuestion : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         hideOtherFragments()
+        showQuestion()
         setImage()
         clickListenerAndChangeFragment()
     }
 
-
-
-
+    private fun showQuestion(){
+        textViewQuestion1.text=ParseJSON.getObjectsJSON(this.requireContext())[0].question
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

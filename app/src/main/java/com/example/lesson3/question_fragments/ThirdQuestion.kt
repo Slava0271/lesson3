@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
+import com.example.lesson3.ParseJSON
 import com.example.lesson3.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_first_question.*
@@ -47,8 +48,13 @@ class ThirdQuestion : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         hideOtherFragments()
+        showQuestion()
         setImage()
         clickListenerAndChangeFragment()
+    }
+
+    private fun showQuestion(){
+        textViewQuestion3.text= ParseJSON.getObjectsJSON(this.requireContext())[2].question
     }
 
     override fun onCreateView(

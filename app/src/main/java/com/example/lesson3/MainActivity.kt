@@ -3,6 +3,7 @@ package com.example.lesson3
 import android.content.Context
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Log
 import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -14,6 +15,8 @@ import com.example.lesson3.bottom_navigation.Quiz
 import com.example.lesson3.bottom_navigation.Settings
 import com.example.lesson3.bottom_navigation.Stats
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +25,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         imageViewMusic.setImageResource(R.drawable.ic_baseline_music_off_24)
         listenSwitchButton()
+        bottomNavigation()
+
+        // bottomNavListener()
+    }
+
+
+    private fun change(fragment: Fragment) {
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment, fragment)
+        this.supportFragmentManager.executePendingTransactions();      // <----- This is the key
+        fragmentTransaction.commit()
+    }
+
+    private fun bottomNavigation() {
 
         val settings: Fragment = Settings()
 
@@ -41,16 +59,6 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-
-        // bottomNavListener()
-    }
-
-    private fun change(fragment: Fragment) {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragment, fragment)
-        this.supportFragmentManager.executePendingTransactions();      // <----- This is the key
-        fragmentTransaction.commit()
     }
 
 

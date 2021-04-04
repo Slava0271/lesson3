@@ -8,9 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import com.example.lesson3.ParseJSON
 import com.example.lesson3.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_fifth_question.*
+import kotlinx.android.synthetic.main.fragment_first_question.*
 import kotlinx.android.synthetic.main.fragment_fourth_question.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -44,8 +46,13 @@ class FifthQuestion : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         hideOtherFragments()
+        showQuestion()
         setImage()
         clickListenerAndChangeFragment()
+    }
+
+    private fun showQuestion(){
+        textViewQuestion5.text= ParseJSON.getObjectsJSON(this.requireContext())[4].question
     }
 
     override fun onCreateView(
