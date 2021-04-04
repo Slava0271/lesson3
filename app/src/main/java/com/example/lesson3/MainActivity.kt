@@ -1,40 +1,43 @@
 package com.example.lesson3
 
 import android.content.Context
-import android.location.SettingInjectorService
+import android.media.MediaPlayer
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.ArrayAdapter
-import android.widget.Toast
+import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.lesson3.bottom_navigation.Quiz
+import com.example.lesson3.bottom_navigation.Settings
+import com.example.lesson3.bottom_navigation.Stats
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.settings_blank.*
 
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        imageViewMusic.setImageResource(R.drawable.ic_baseline_music_off_24)
+        listenSwitchButton()
+
+        val settings: Fragment = Settings()
 
         bottom_navigation.setOnNavigationItemSelectedListener { item ->
-
             when (item.itemId) {
                 R.id.page_3 -> {
-                    Toast.makeText(this, "test3", Toast.LENGTH_SHORT).show()
-                    change()
+                    change(settings)
                 }
                 R.id.page_2 -> {
-                    Toast.makeText(this, "test2", Toast.LENGTH_SHORT).show()
-                    change1()
+                    val fragment: Fragment = Stats()
+                    change(fragment)
                 }
-                R.id.page_1 ->
-                    Toast.makeText(this, "test1", Toast.LENGTH_SHORT).show()
-
-
+                R.id.page_1 -> {
+                    val fragment: Fragment = Quiz()
+                    change(fragment)
+                }
             }
             true
         }
@@ -42,53 +45,26 @@ class MainActivity : AppCompatActivity() {
         // bottomNavListener()
     }
 
-
-    private fun change() {
-        val fragment: Fragment = Settings()
-        val fragmentFirst: Fragment = BlankFragment()
+    private fun change(fragment: Fragment) {
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.hide(fragmentFirst)
         fragmentTransaction.replace(R.id.fragment, fragment)
-        fragmentTransaction.hide(fragmentFirst)
+        this.supportFragmentManager.executePendingTransactions();      // <----- This is the key
         fragmentTransaction.commit()
-
     }
 
-    private fun change1() {
-        val fragment: Fragment = BlankFragment2()
-        val fragmentFirst: Fragment = Settings()
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.hide(fragmentFirst)
-        fragmentTransaction.replace(R.id.fragment, fragment)
-        fragmentTransaction.hide(fragmentFirst)
-        fragmentTransaction.commit()
 
-    }
-
-    private fun bottomNavListener() {
-
-
-        bottom_navigation.setOnNavigationItemReselectedListener { item ->
-            when (item.itemId) {
-                R.id.page_1 -> {
-                    Toast.makeText(this, "test1", Toast.LENGTH_SHORT).show()
-
-                }
-                R.id.page_2 -> {
-                    Toast.makeText(this, "test2", Toast.LENGTH_SHORT).show()
-                }
-                R.id.page_3 -> {
-                    val fragment: Fragment = Settings()
-                    val fragmentManager: FragmentManager = supportFragmentManager
-                    val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.fragment, fragment)
-                    fragmentTransaction.commit()
-                }
+    private fun listenSwitchButton() {
+        val song = MediaPlayer.create(this, R.raw.song)
+        song.start()
+        switchMusic.setOnCheckedChangeListener() { _, isChecked ->
+            if (isChecked) {
+                song.pause()
+            } else {
+                song.start()
             }
         }
     }
-
-
 }
+
+

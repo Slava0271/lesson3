@@ -1,12 +1,15 @@
-package com.example.lesson3
+package com.example.lesson3.bottom_navigation
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import com.example.lesson3.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,7 +21,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [BlankFragment2.newInstance] factory method to
  * create an instance of this fragment.
  */
-class BlankFragment2 : Fragment() {
+class Stats : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -38,6 +41,12 @@ class BlankFragment2 : Fragment() {
         return inflater.inflate(R.layout.stats_blank, container, false)
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        fragment.view?.setBackgroundColor(Color.WHITE);
+
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -49,7 +58,7 @@ class BlankFragment2 : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic fun newInstance(param1: String, param2: String) =
-                BlankFragment2().apply {
+                Stats().apply {
                     arguments = Bundle().apply {
                         putString(ARG_PARAM1, param1)
                         putString(ARG_PARAM2, param2)
