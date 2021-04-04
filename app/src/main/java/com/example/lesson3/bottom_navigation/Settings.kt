@@ -1,13 +1,17 @@
 package com.example.lesson3.bottom_navigation
 
-import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import com.example.lesson3.MainActivity
 import com.example.lesson3.R
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.settings_blank.*
 
 
@@ -36,16 +40,16 @@ class Settings : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        val values = arrayOf("Easy","Medium","Hard")
+        hideOtherFragments()
+        val values = arrayOf("Easy", "Medium", "Hard")
         val adapter = ArrayAdapter(this.requireActivity(), R.layout.spinner_item, values)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown)
         planets_spinner.adapter = adapter
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.settings_blank, container, false)
@@ -63,11 +67,31 @@ class Settings : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            Settings().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                Settings().apply {
+                    arguments = Bundle().apply {
+                        putString(ARG_PARAM1, param1)
+                        putString(ARG_PARAM2, param2)
+                    }
                 }
-            }
+    }
+
+
+//    private fun radioButtonListenAndPlayMusic() {
+//        val song = MediaPlayer.create(this.requireActivity(), R.raw.song)
+//        radioMusic.setOnCheckedChangeListener { _, checkedId ->
+//            val radioButton: View = radioMusic.findViewById(checkedId)
+//            when (radioMusic.indexOfChild(radioButton)) {
+//                0 -> song.start()
+//                1 -> song.pause()
+//            }
+//        }
+//    }
+
+
+    private fun hideOtherFragments() {
+        fragment.view?.setBackgroundColor(Color.WHITE);
     }
 }
+
+
+

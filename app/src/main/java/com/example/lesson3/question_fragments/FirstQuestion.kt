@@ -1,6 +1,7 @@
 package com.example.lesson3.question_fragments
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
@@ -9,8 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import com.example.lesson3.R
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_first_question.*
 
 
@@ -29,6 +33,10 @@ class FirstQuestion : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private fun hideOtherFragments() {
+        fragment.view?.setBackgroundColor(Color.WHITE);
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -41,9 +49,13 @@ class FirstQuestion : Fragment() {
     @SuppressLint("ResourceType")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        hideOtherFragments()
         setImage()
         clickListenerAndChangeFragment()
     }
+
+
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -102,8 +114,12 @@ class FirstQuestion : Fragment() {
     private fun changeFragment() {
         val handler = Handler()
         handler.postDelayed(Runnable {
-            button1question1.findNavController().navigate(R.id.action_firstQuestion_to_secondQuestion)
-        }, 2000)
+            val switchFragment:Fragment=SecondQuestion()
+            val fragmentManager: FragmentManager = this.requireActivity().supportFragmentManager
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment, switchFragment)
+            this.requireActivity().supportFragmentManager.executePendingTransactions();      // <----- This is the key
+            fragmentTransaction.commit()        }, 2000)
     }
 
 }

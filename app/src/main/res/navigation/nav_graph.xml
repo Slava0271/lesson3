@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_quiz_to_firstQuestion"
             app:destination="@id/firstQuestion" />
+        <action
+            android:id="@+id/action_quiz_to_settings"
+            app:destination="@id/settings" />
     </fragment>
     <fragment
         android:id="@+id/stats"

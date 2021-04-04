@@ -1,5 +1,6 @@
 package com.example.lesson3.bottom_navigation
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
+import com.example.lesson3.MainActivity
 import com.example.lesson3.R
 import com.example.lesson3.question_fragments.FirstQuestion
 import kotlinx.android.synthetic.main.quiz_blank.*
@@ -46,31 +48,11 @@ class Quiz : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         button.setOnClickListener() {
-            view:View->view.findNavController().navigate(R.id.action_quiz_to_firstQuestion)
+            val fragment:Fragment=FirstQuestion()
+            change(fragment)
+          //  view:View->view.findNavController().navigate(R.id.action_quiz_to_firstQuestion)
         }
     }
-
-    private fun changeToPlay() {
-            //Фрагмент на который я хочу переключить
-            val fragment: Fragment = FirstQuestion()
-            //Фрагмент который нужно убрать
-            val quiz: Fragment = Quiz()
-            val fragmentManager: FragmentManager = this.requireActivity().supportFragmentManager
-            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment, fragment)
-            fragmentTransaction.hide(quiz)
-            fragmentTransaction.commit()
-    }
-
-     fun hideAndShowFragment(hide: Boolean) {
-        val fragment: Fragment = Quiz()
-        val fm = fragmentManager
-        fm!!.beginTransaction()
-                .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                .hide(fragment)
-                .commit()
-    }
-
 
     companion object {
         /**
@@ -90,5 +72,12 @@ class Quiz : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+    private fun change(fragment: Fragment) {
+        val fragmentManager: FragmentManager = this.requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment, fragment)
+        this.requireActivity().supportFragmentManager.executePendingTransactions();      // <----- This is the key
+        fragmentTransaction.commit()
     }
 }

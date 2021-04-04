@@ -1,5 +1,6 @@
 package com.example.lesson3.question_fragments
 
+import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
@@ -8,8 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import com.example.lesson3.R
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_fourth_question.*
 import kotlinx.android.synthetic.main.fragment_third_question.*
 
@@ -27,6 +31,10 @@ class FourthQuestion : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private fun hideOtherFragments() {
+        fragment.view?.setBackgroundColor(Color.WHITE);
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +54,7 @@ class FourthQuestion : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        hideOtherFragments()
         setImage()
         clickListenerAndChangeFragment()
     }
@@ -106,13 +115,15 @@ class FourthQuestion : Fragment() {
             ), PorterDuff.Mode.MULTIPLY
         );
     }
-
     private fun changeFragment() {
         val handler = Handler()
         handler.postDelayed(Runnable {
-            button1question4.findNavController()
-                .navigate(R.id.action_fourthQuestion_to_fifthQuestion)
-        }, 2000)
+            val switchFragment:Fragment=FifthQuestion()
+            val fragmentManager: FragmentManager = this.requireActivity().supportFragmentManager
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment, switchFragment)
+            this.requireActivity().supportFragmentManager.executePendingTransactions();      // <----- This is the key
+            fragmentTransaction.commit()        }, 2000)
     }
 
     private fun setImage() {

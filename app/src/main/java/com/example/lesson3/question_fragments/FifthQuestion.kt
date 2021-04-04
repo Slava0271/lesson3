@@ -1,5 +1,6 @@
 package com.example.lesson3.question_fragments
 
+import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.example.lesson3.R
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_fifth_question.*
 import kotlinx.android.synthetic.main.fragment_fourth_question.*
 
@@ -26,6 +28,11 @@ class FifthQuestion : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+
+    private fun hideOtherFragments() {
+        fragment.view?.setBackgroundColor(Color.WHITE);
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -36,6 +43,7 @@ class FifthQuestion : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        hideOtherFragments()
         setImage()
         clickListenerAndChangeFragment()
     }
