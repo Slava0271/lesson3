@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.example.lesson3.MainActivity
 import com.example.lesson3.R
@@ -45,6 +46,7 @@ class Settings : Fragment() {
         val adapter = ArrayAdapter(this.requireActivity(), R.layout.spinner_item, values)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown)
         planets_spinner.adapter = adapter
+        radioButtonListenAndPlayMusic()
     }
 
     override fun onCreateView(
@@ -76,17 +78,15 @@ class Settings : Fragment() {
     }
 
 
-//    private fun radioButtonListenAndPlayMusic() {
-//        val song = MediaPlayer.create(this.requireActivity(), R.raw.song)
-//        radioMusic.setOnCheckedChangeListener { _, checkedId ->
-//            val radioButton: View = radioMusic.findViewById(checkedId)
-//            when (radioMusic.indexOfChild(radioButton)) {
-//                0 -> song.start()
-//                1 -> song.pause()
-//            }
-//        }
-//    }
-
+    private fun radioButtonListenAndPlayMusic() {
+        radioGroupTheme.setOnCheckedChangeListener { _, checkedId ->
+            val radioButton: View = radioGroupTheme.findViewById(checkedId)
+            when (radioGroupTheme.indexOfChild(radioButton)) {
+                0 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                1 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+        }
+    }
 
     private fun hideOtherFragments() {
         fragment.view?.setBackgroundColor(Color.WHITE);
